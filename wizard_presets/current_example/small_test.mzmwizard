@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><wizard>
+    <wiz_part part="DATA_IMPORT" preset="Data">
+        <parameter name="File names">
+            <file>D:\Data\salt_infusion\NIH_Nat-Mix21-24_NaAcetat1mgL_1.mzML</file>
+            <file>D:\Data\salt_infusion\NIH_Nat-Mix21-24_NH4Acetat01_1.mzML</file>
+            <file>D:\Data\salt_infusion\NIH_Nat-Mix21-2_water_1.mzML</file>
+        </parameter>
+    </wiz_part>
+    <wiz_part part="ION_INTERFACE" preset="UHPLC">
+        <parameter name="Smoothing">true</parameter>
+        <parameter name="Stable ionization across samples">true</parameter>
+        <parameter name="Crop retention time">
+            <min>4.0</min>
+            <max>8.0</max>
+        </parameter>
+        <parameter name="Max peaks in chromatogram">15</parameter>
+        <parameter name="Min # of data points">5</parameter>
+        <parameter name="Approximate feature FWHM" unit="MINUTES">0.05</parameter>
+        <parameter name="Intra-sample RT tolerance" unit="MINUTES">0.04</parameter>
+        <parameter name="Inter-sample RT tolerance" unit="MINUTES">0.1</parameter>
+    </wiz_part>
+    <wiz_part part="IMS" preset="NO_IMS">
+        <parameter name="IMS active">false</parameter>
+        <parameter name="Smoothing">true</parameter>
+        <parameter name="IMS type">none</parameter>
+        <parameter name="Min # of data points">5</parameter>
+        <parameter name="Approximate feature FWHM">0.01</parameter>
+    </wiz_part>
+    <wiz_part part="MS" preset="Orbitrap">
+        <parameter name="Ion mode">Positive</parameter>
+        <parameter name="MS1 noise level">10000.0</parameter>
+        <parameter name="MS2 noise level">3000.0</parameter>
+        <parameter name="Minimum feature height">300000.0</parameter>
+        <parameter name="Scan to scan m/z tolerance">
+            <absolutetolerance>0.002</absolutetolerance>
+            <ppmtolerance>10.0</ppmtolerance>
+        </parameter>
+        <parameter name="Feature to feature m/z tolerance">
+            <absolutetolerance>0.0015</absolutetolerance>
+            <ppmtolerance>3.0</ppmtolerance>
+        </parameter>
+        <parameter name="Sample to sample m/z tolerance">
+            <absolutetolerance>0.0015</absolutetolerance>
+            <ppmtolerance>5.0</ppmtolerance>
+        </parameter>
+    </wiz_part>
+    <wiz_part part="FILTER" preset="Filters">
+        <parameter name="Original feature list">KEEP</parameter>
+        <parameter name="Min samples per aligned feature">
+            <abs>1</abs>
+            <rel>0.0</rel>
+        </parameter>
+        <parameter name="Only keep features with 13C">true</parameter>
+    </wiz_part>
+    <wiz_part part="ANNOTATION" preset="Annotation">
+        <parameter name="Local CSV database" selected="false">
+            <parameter name="Database file">
+                <current_file>D:\Data\msn\lib_formatted_mce.csv</current_file>
+            </parameter>
+            <parameter name="Use precursor m/z">as calculated from neutral mass (or formula/smiles) + ions</parameter>
+            <parameter name="Filename column (for library generation)" selected="false">filename</parameter>
+            <parameter name="Columns">
+                <importtype column="neutral mass" datatype="io.github.mzmine.datamodel.features.types.numbers.NeutralMassType" selected="true"/>
+                <importtype column="mz" datatype="io.github.mzmine.datamodel.features.types.numbers.PrecursorMZType" selected="true"/>
+                <importtype column="rt" datatype="io.github.mzmine.datamodel.features.types.numbers.RTType" selected="true"/>
+                <importtype column="formula" datatype="io.github.mzmine.datamodel.features.types.annotations.formula.FormulaType" selected="true"/>
+                <importtype column="smiles" datatype="io.github.mzmine.datamodel.features.types.annotations.SmilesStructureType" selected="true"/>
+                <importtype column="inchi" datatype="io.github.mzmine.datamodel.features.types.annotations.InChIStructureType" selected="false"/>
+                <importtype column="inchi key" datatype="io.github.mzmine.datamodel.features.types.annotations.InChIKeyStructureType" selected="false"/>
+                <importtype column="name" datatype="io.github.mzmine.datamodel.features.types.annotations.CompoundNameType" selected="false"/>
+                <importtype column="CCS" datatype="io.github.mzmine.datamodel.features.types.numbers.CCSType" selected="false"/>
+                <importtype column="mobility" datatype="io.github.mzmine.datamodel.features.types.numbers.MobilityType" selected="false"/>
+                <importtype column="comment" datatype="io.github.mzmine.datamodel.features.types.annotations.CommentType" selected="true"/>
+                <importtype column="adduct" datatype="io.github.mzmine.datamodel.features.types.annotations.iin.IonAdductType" selected="false"/>
+                <importtype column="PubChemCID" datatype="io.github.mzmine.modules.dataprocessing.id_localcsvsearch.PubChemIdType" selected="false"/>
+            </parameter>
+        </parameter>
+        <parameter name="Spectral library files"/>
+    </wiz_part>
+    <wiz_part part="WORKFLOW" preset="DDA">
+        <parameter name="Export path" selected="true">
+            <current_file>D:\tmp\testwiz\wiz1</current_file>
+            <last_file>D:\tmp\testwiz\wiz1</last_file>
+            <last_file>D:\git\mzmine3\rfwse</last_file>
+        </parameter>
+        <parameter name="Export for GNPS FBMN/IIMN">true</parameter>
+        <parameter name="Export for SIRIUS">true</parameter>
+    </wiz_part>
+</wizard>
